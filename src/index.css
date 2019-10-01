@@ -2,7 +2,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,800`');
 @import url('style.default.css');
 html, body {
-  height: 100%;
-  width: 100%;
   font-family: 'Poppins', sans-serif;
 }
