@@ -4,8 +4,12 @@
   "private": true,
   "dependencies": {
     "@types/history": "^4.7.3",
+    "bootstrap": "^4.3.1",
     "connected-react-router": "^6.5.2",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
     "react": "^16.10.1",
+    "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.10.1",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
@@ -35,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "redux-devtools": "^3.5.0"
+    "redux-devtools": "^3.5.0",
+    "style-loader": "^1.0.0"
   }
 }

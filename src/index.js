@@ -2,9 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch,BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import {ConnectedRouter} from 'connected-react-router';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
+//import $ from 'jquery';
+//import Popper from 'popper.js';
+
 import './index.css';
-import App from './App';
 
 import * as serviceWorker from './serviceWorker';
 import Login from './components/Login/login'
@@ -18,6 +23,7 @@ ReactDOM.render(
             </Switch>
         </BrowserRouter>
     </Provider>, document.getElementById('root')
+
 );
 
 // If you want your app to work offline and load faster, you can change
