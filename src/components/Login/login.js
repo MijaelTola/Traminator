@@ -22,7 +22,7 @@ const Login = () => {
                                 </div>
                                 <div className="form-group mb-4">
                                     <div className="custom-control custom-checkbox">
-                                        <input id="customCheck1" type="checkbox" checked className="custom-control-input" checked={false}/>
+                                        <input id="customCheck1" type="checkbox" className="custom-control-input" />
                                         <label htmlFor="customCheck1" className="custom-control-label">Remember Me</label>
                                     </div>
                                 </div>
@@ -30,7 +30,7 @@ const Login = () => {
                             </form>
                         </div>
                     </div>
-                    <p class="mt-5 mb-0 text-gray-400 text-center">Design by Los cacheros de tu hermana</p>
+                    <p className="mt-5 mb-0 text-gray-400 text-center">Design by Los cacheros de tu hermana</p>
                 </div>
             </div>
         </>
