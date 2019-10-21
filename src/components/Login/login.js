@@ -5,8 +5,7 @@ const Login = ({user, loginUser}) => {
     const [currentUser, setCurrentUser] = useState(user);
     const {register, handleSubmit} = useForm();
     const onSubmit = (data) => {
-        console.log(currentUser);
-        console.log(data);
+        loginUser(data.email, data.password);
     }
     return (
         <>
@@ -25,7 +24,7 @@ const Login = ({user, loginUser}) => {
                                     <input ref={register} type="text" name="email" placeholder="Email address" className="form-control border-0 shadow form-control-lg" />
                                 </div>
                                 <div className="form-group mb-4">
-                                    <input ref={register} type="password" name="passowrd" placeholder="Password" className="form-control border-0 shadow form-control-lg text-violet" />
+                                    <input ref={register} type="password" name="password" placeholder="Password" className="form-control border-0 shadow form-control-lg text-violet" />
                                 </div>
                                 {
                                     /*
