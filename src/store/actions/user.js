@@ -30,8 +30,19 @@ export const loggInUser = (email, password) => {
                 tokeId: result.token,
                 signUpSuccess: result.ok,
                 isLogged: true,
-                isAthenticated: true,
+                isAuthenticated: true,
             }));
+
+            localStorage.setItem('user-token', JSON.stringify({
+                nombre: result.usuario.nombre,
+                email: result.usuario.email,
+                role: result.usuario.role,
+                id: result.usuario['_id'],
+                tokeId: result.token,
+                signUpSuccess: result.ok,
+                isLogged: true,
+                isAuthenticated: true
+                }))
         }  else {
             dispatch(loginUser({
                 signUpSuccess: 'not found',

@@ -2,13 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {Redirect, Route, Switch} from 'react-router-dom'
 
-import Register from '../Register/Register';
+import Register from '../../components/Register/Register';
+import Home from '../../components/Home/Home'
 
 const PrivateAppRoutes = ({user}) => {
     return (
-        <switch>
+        <Switch>
             <Route path='/register' component={Register}/>
-        </switch>
+            <Route path='/home' component={Home}/>
+        </Switch>
     )
 }
 

@@ -7,6 +7,7 @@ const Login = ({user, loginUser}) => {
     const onSubmit = (data) => {
         loginUser(data.email, data.password);
     }
+
     return (
         <>
             <div className="page-holder d-flex align-items-center">

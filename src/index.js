@@ -19,11 +19,13 @@ import PrivateRoute from './containers/Routes/PrivateRoute'
 
 import store from './store';
 import { history } from "./store/configureStore";
-import { logoutUser } from './store/actions';
+import { logoutUser, loginUser } from './store/actions';
+
 import { isLogged } from './helpers/services'
 
-store.dispatch(logoutUser());
 const user = localStorage.getItem('user-token');
+
+store.dispatch(loginUser(JSON.parse(user)));
 isLogged().then(() => {
     ReactDOM.render(
         <Provider store={store}>
