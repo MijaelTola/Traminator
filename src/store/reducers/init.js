@@ -5,7 +5,6 @@ export const defaultUser = {
     signUpFailure: false,
     name: '',
     email: '',
-    teamId: '',
     role: '',
     tokenId: ''
   };

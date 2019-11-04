@@ -1,12 +1,19 @@
 import React from 'react'
-import { connect } from 'redux'
+import { connect } from 'react-redux'
 import {Redirect, Route, Switch} from 'react-router-dom'
 
-const PrivateAppRoutes = () => {
+import Register from '../Register/Register';
+
+const PrivateAppRoutes = ({user}) => {
     return (
-        <div>
-            Routes
-        </div>
+        <switch>
+            <Route path='/register' component={Register}/>
+        </switch>
     )
 }
 
+const mapStateToProps = (state) => ({
+    user: state.user
+});
+
+export default connect(mapStateToProps)(PrivateAppRoutes);

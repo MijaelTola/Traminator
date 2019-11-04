@@ -25,7 +25,14 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    }
   },
   "browserslist": {
     "production": [
@@ -40,6 +47,8 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-loader": "^3.0.2",
     "redux-devtools": "^3.5.0",
     "style-loader": "^1.0.0"
   }

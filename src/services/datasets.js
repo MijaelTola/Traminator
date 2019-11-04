@@ -1,5 +1,6 @@
-import {catchError, requestIsOk} from '../helpers/services'
+import {valid, catchError, requestIsOk} from '../helpers/services'
 
+/*
 export const requestData = (url, signal) => {
     // OPTIONS.headers.id_token = store.getState().user.tokenId;
     return fetch(url, signal ? {signal: signal} : {}) //, OPTIONS)
@@ -9,3 +10,9 @@ export const requestData = (url, signal) => {
         catchError(err, signal)
       });
   };
+*/
+export const postData = (url, post) => {
+  return fetch(url, post)
+    .then(response => response.json())
+    .then(data => data);
+};

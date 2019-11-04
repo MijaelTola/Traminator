@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         loginUser(username, password) {
+
             dispatch(loggInUser(username, password));
             /*
             localStorage.setItem('user-token', JSON.stringify({
