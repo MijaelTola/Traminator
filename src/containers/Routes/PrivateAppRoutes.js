@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import {Redirect, Route, Switch} from 'react-router-dom'
 
 import Register from '../../containers/Register/Register';
-
-import Home from '../../components/Home/Home'
+import Home from '../../containers/NavBar/NavBar';
 
 const PrivateAppRoutes = ({user}) => {
     return (

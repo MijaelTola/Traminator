@@ -4,7 +4,7 @@ import { Navbar, Nav, Form, Dropdown } from 'react-bootstrap'
 import {Tab, Tabs, Row, Container, Col} from 'react-bootstrap';
 import Register from '../Register/Register'
 
-const NavBar = () => {
+const NavBar = ({logoutUser, user}) => {
     return (
         <React.Fragment>
             <header className="header">
@@ -47,10 +47,13 @@ const NavBar = () => {
                                 <div className="dropdown-divider"></div><a href="#" className="dropdown-item text-center"><small className="font-weight-bold headings-font-family text-uppercase">View all notifications</small></a>
                             </div>
                         </li>
-                        <li className="nav-item dropdown ml-auto"><a id="userInfo" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle"><img src="img/avatar-6.jpg" alt="Jason Doe" styles="max-width: 2.5rem;" className="img-fluid rounded-circle shadow" /></a>
+                        <li className="nav-item dropdown ml-auto">
+                            <a id="userInfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle"> 
+                                {user.nombre}
+                        </a>
                             <div aria-labelledby="userInfo" className="dropdown-menu"><a href="#" className="dropdown-item"><strong className="d-block text-uppercase headings-font-family">Mark Stephen</strong><small>Web Developer</small></a>
                                 <div className="dropdown-divider"></div><a href="#" className="dropdown-item">Settings</a><a href="#" className="dropdown-item">Activity log       </a>
-                                <div className="dropdown-divider"></div><a href="login.html" className="dropdown-item">Logout</a>
+                                <div className="dropdown-divider dropdown-item "></div><span onClick={() => logoutUser()} className="dropdown-item">Logout</span>
                             </div>
                         </li>
                     </ul>
