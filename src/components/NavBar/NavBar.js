@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { Navbar, Nav, Form, Dropdown } from 'react-bootstrap'
+import {Tab, Tabs, Row, Container, Col} from 'react-bootstrap';
+import Register from '../Register/Register'
 
 const NavBar = () => {
     return (
         <React.Fragment>
             <header className="header">
-                <nav className="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" className="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i className="fas fa-align-left"></i></a><a href="index.html" className="navbar-brand font-weight-bold text-uppercase text-base">Traminator - Sistema de Monitorio Para Transporte publico La Paz </a>
+                <Nav className="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" className="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i className="fas fa-align-left"></i></a><a href="index.html" className="navbar-brand font-weight-bold text-uppercase text-base">Traminator - Sistema de Monitorio Para Transporte publico La Paz </a>
                     <ul className="ml-auto d-flex align-items-center list-unstyled mb-0">
                         <li className="nav-item">
                             <form id="searchForm" className="ml-auto d-none d-lg-block">
@@ -50,31 +54,39 @@ const NavBar = () => {
                             </div>
                         </li>
                     </ul>
-                </nav>
+                </Nav>
             </header>
             <>
-                <div className="d-flex align-items-stretch">
-                    <div id="sidebar" className="sidebar py-3">
-                        <div className="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">MAIN</div>
-                        <ul className="sidebar-menu list-unstyled">
-                            <li className="sidebar-list-item"><a href="index.html" className="sidebar-link text-muted active"><i className="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
-                            <li className="sidebar-list-item"><a href="charts.html" className="sidebar-link text-muted"><i className="o-sales-up-1 mr-3 text-gray"></i><span>Charts</span></a></li>
-                            <li className="sidebar-list-item"><a href="tables.html" className="sidebar-link text-muted"><i className="o-table-content-1 mr-3 text-gray"></i><span>Tables</span></a></li>
-                            <li className="sidebar-list-item"><a href="forms.html" className="sidebar-link text-muted"><i className="o-survey-1 mr-3 text-gray"></i><span>Forms</span></a></li>
-                            <li className="sidebar-list-item"><a href="#" data-toggle="collapse" data-target="#pages" aria-expanded="false" aria-controls="pages" className="sidebar-link text-muted"><i className="o-wireframe-1 mr-3 text-gray"></i><span>Pages</span></a>
-                                <div id="pages" className="collapse">
-                                    <ul className="sidebar-menu list-unstyled border-left border-primary border-thick">
-                                        <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page one</a></li>
-                                        <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page two</a></li>
-                                        <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page three</a></li>
-                                        <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page four</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li className="sidebar-list-item"><a href="login.html" className="sidebar-link text-muted"><i className="o-exit-1 mr-3 text-gray"></i><span>Login</span></a></li>
-                        </ul>
+                <Nav>
+                    <div className="d-flex align-items-stretch">
+                        <div id="sidebar" className="sidebar py-3">
+                            <div className="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">MAIN</div>
+                            <ul className="sidebar-menu list-unstyled">
+                                <li className="sidebar-list-item"><a href="index.html" className="sidebar-link text-muted active"><i className="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
+                                <li className="sidebar-list-item">
+                                    <NavLink className="sidebar-link text-muted" to="/register">
+                                        <i className="o-sales-up-1 mr-3 text-gray"></i>
+                                        <span>Registrar</span>
+                                    </NavLink>
+                                   
+                                </li>
+                                <li className="sidebar-list-item"><a href="tables.html" className="sidebar-link text-muted"><i className="o-table-content-1 mr-3 text-gray"></i><span>Tables</span></a></li>
+                                <li className="sidebar-list-item"><a href="forms.html" className="sidebar-link text-muted"><i className="o-survey-1 mr-3 text-gray"></i><span>Forms</span></a></li>
+                                <li className="sidebar-list-item"><a href="#" data-toggle="collapse" data-target="#pages" aria-expanded="false" aria-controls="pages" className="sidebar-link text-muted"><i className="o-wireframe-1 mr-3 text-gray"></i><span>Pages</span></a>
+                                    <div id="pages" className="collapse">
+                                        <ul className="sidebar-menu list-unstyled border-left border-primary border-thick">
+                                            <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page one</a></li>
+                                            <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page two</a></li>
+                                            <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page three</a></li>
+                                            <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page four</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li className="sidebar-list-item"><a href="login.html" className="sidebar-link text-muted"><i className="o-exit-1 mr-3 text-gray"></i><span>Login</span></a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                </Nav>
             </>
         </React.Fragment>
     )
