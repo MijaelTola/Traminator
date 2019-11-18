@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {Redirect, Route, Switch} from 'react-router-dom'
 
-import Register from '../../components/Register/Register';
+import Register from '../../containers/Register/Register';
+
 import Home from '../../components/Home/Home'
 
 const PrivateAppRoutes = ({user}) => {

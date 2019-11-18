@@ -7,6 +7,9 @@ export const SERVER = (function() {
         LOGIN: () => {
             return `${API_URL}/login`
         },
+        CREATE_USER: () => {
+            return `${API_URL}/usuario`
+        }
     };
 })();
 

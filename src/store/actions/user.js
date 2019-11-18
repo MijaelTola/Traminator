@@ -18,6 +18,13 @@ export const logoutUser = () => {
     }
 }
 
+export const registerUser = (user) => {
+    console.log('comes here');
+    return async dispatch => {
+        const result = await postData(SERVER.CREATE_USER(), POST(user));
+        console.log(result);
+    }
+}
 export const loggInUser = (email, password) => {
     return async dispatch => {
         const result = await postData(SERVER.LOGIN(), POST({ email, password }))
