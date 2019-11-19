@@ -73,19 +73,13 @@ const NavBar = ({logoutUser, user}) => {
                                     </NavLink>
                                    
                                 </li>
-                                <li className="sidebar-list-item"><a href="tables.html" className="sidebar-link text-muted"><i className="o-table-content-1 mr-3 text-gray"></i><span>Tables</span></a></li>
-                                <li className="sidebar-list-item"><a href="forms.html" className="sidebar-link text-muted"><i className="o-survey-1 mr-3 text-gray"></i><span>Forms</span></a></li>
-                                <li className="sidebar-list-item"><a href="#" data-toggle="collapse" data-target="#pages" aria-expanded="false" aria-controls="pages" className="sidebar-link text-muted"><i className="o-wireframe-1 mr-3 text-gray"></i><span>Pages</span></a>
-                                    <div id="pages" className="collapse">
-                                        <ul className="sidebar-menu list-unstyled border-left border-primary border-thick">
-                                            <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page one</a></li>
-                                            <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page two</a></li>
-                                            <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page three</a></li>
-                                            <li className="sidebar-list-item"><a href="#" className="sidebar-link text-muted pl-lg-5">Page four</a></li>
-                                        </ul>
-                                    </div>
+                                <li className="sidebar-list-item"><a href="tables.html" className="sidebar-link text-muted"><i className="o-table-content-1 mr-3 text-gray"></i><span>Tablas</span></a></li>
+                                <li className="sidebar-list-item">
+                                    <NavLink className="sidebar-link text-muted" to="/maps">
+                                        <i className="o-survey-1 mr-3 text-gray"></i><span>Mapas</span>
+                                    </NavLink>
                                 </li>
-                                <li className="sidebar-list-item"><a href="login.html" className="sidebar-link text-muted"><i className="o-exit-1 mr-3 text-gray"></i><span>Login</span></a></li>
+                               
                             </ul>
                         </div>
                     </div>
