@@ -3,14 +3,13 @@ import { connect } from 'react-redux'
 import {Redirect, Route, Switch} from 'react-router-dom'
 
 import Register from '../../containers/Register/Register';
-import Home from '../../containers/NavBar/NavBar';
 import Maps from '../../components/Maps/Maps'
-import Headers from '../../containers/Header/Header'
+import Home from '../../components/Maps/Maps'
 const PrivateAppRoutes = ({user}) => {
     return (
         <Switch>
             <Route path='/register' component={Register}/>
-            <Route path='/home' component={Headers}/>
+            <Route path='/home' component={Home}/>
             <Route path='/maps' component={Maps}/>
         </Switch>
     )
