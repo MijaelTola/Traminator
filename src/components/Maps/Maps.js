@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 import Header from '../../containers/Header/Header'
 import NavBar from '../../containers/NavBar/NavBar'

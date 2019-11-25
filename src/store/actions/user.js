@@ -12,6 +12,7 @@ export const loginUser = (user) => {
     }
 }
 export const logoutUser = () => {
+    localStorage.clear();
     return {
         type: TYPES.LOAD_USER,
         action: { ...defaultUser }

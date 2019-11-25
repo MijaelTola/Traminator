@@ -1,11 +1,13 @@
 import React from 'react' 
-import { NavLink, Link } from 'react-router-dom';
-import { Navbar, Nav, Form, Dropdown } from 'react-bootstrap'
+import {  Nav  } from 'react-bootstrap'
 
 export default ({user, logoutUser}) => {
     return (
         <header className="header">
-                <Nav className="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" className="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i className="fas fa-align-left"></i></a><a href="index.html" className="navbar-brand font-weight-bold text-uppercase text-base">Traminator - Sistema de Monitorio Para Transporte publico La Paz </a>
+                <Nav className="navbar navbar-expand-lg px-4 py-2 bg-white shadow">
+                    <div href="#" className="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead">
+                        <i className="fas fa-align-left"></i></div>
+                        <div href="index.html" className="navbar-brand font-weight-bold text-uppercase text-base">Traminator - Sistema de Monitorio Para Transporte publico La Paz </div>
                     <ul className="ml-auto d-flex align-items-center list-unstyled mb-0">
                         <li className="nav-item">
                             <form id="searchForm" className="ml-auto d-none d-lg-block">
@@ -15,41 +17,18 @@ export default ({user, logoutUser}) => {
                                 </div>
                             </form>
                         </li>
-                        <li className="nav-item dropdown mr-3"><a id="notifications" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle text-gray-400 px-1"><i className="fa fa-bell"></i><span className="notification-icon"></span></a>
-                            <div aria-labelledby="notifications" className="dropdown-menu"><a href="#" className="dropdown-item">
-                                <div className="d-flex align-items-center">
-                                    <div className="icon icon-sm bg-violet text-white"><i className="fab fa-twitter"></i></div>
-                                    <div className="text ml-2">
-                                        <p className="mb-0">You have 20 followers</p>
-                                    </div>
-                                </div></a><a href="#" className="dropdown-item">
-                                    <div className="d-flex align-items-center">
-                                        <div className="icon icon-sm bg-green text-white"><i className="fas fa-envelope"></i></div>
-                                        <div className="text ml-2">
-                                            <p className="mb-0">You have 6 new messages</p>
-                                        </div>
-                                    </div></a><a href="#" className="dropdown-item">
-                                    <div className="d-flex align-items-center">
-                                        <div className="icon icon-sm bg-blue text-white"><i className="fas fa-upload"></i></div>
-                                        <div className="text ml-2">
-                                            <p className="mb-0">Server rebooted</p>
-                                        </div>
-                                    </div></a><a href="#" className="dropdown-item">
-                                    <div className="d-flex align-items-center">
-                                        <div className="icon icon-sm bg-violet text-white"><i className="fab fa-twitter"></i></div>
-                                        <div className="text ml-2">
-                                            <p className="mb-0">You have 2 followers</p>
-                                        </div>
-                                    </div></a>
-                                <div className="dropdown-divider"></div><a href="#" className="dropdown-item text-center"><small className="font-weight-bold headings-font-family text-uppercase">View all notifications</small></a>
-                            </div>
-                        </li>
                         <li className="nav-item dropdown ml-auto">
-                            <a id="userInfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle"> 
+                            <div id="userInfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle"> 
                                 {user.nombre}
-                        </a>
-                            <div aria-labelledby="userInfo" className="dropdown-menu"><a href="#" className="dropdown-item"><strong className="d-block text-uppercase headings-font-family">Mark Stephen</strong><small>Web Developer</small></a>
-                                <div className="dropdown-divider"></div><a href="#" className="dropdown-item">Settings</a><a href="#" className="dropdown-item">Activity log       </a>
+                        </div>
+                            <div aria-labelledby="userInfo" className="dropdown-menu">
+                                <div className="dropdown-item">
+                                    <strong className="d-block text-uppercase headings-font-family">Mark Stephen</strong>
+                                    <small>Web Developer</small>
+                                    </div>
+                                <div className="dropdown-divider"></div>
+                                <div className="dropdown-item">Settings</div>
+                                <div href="#" className="dropdown-item">Activity log       </div>
                                 <div className="dropdown-divider dropdown-item "></div><span onClick={() => logoutUser()} className="dropdown-item">Logout</span>
                             </div>
                         </li>

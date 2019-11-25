@@ -1,5 +1,6 @@
-import React, {useState}  from 'react'
+import React, {useState, useEffect}  from 'react'
 import useForm from 'react-hook-form'
+import {Redirect} from "react-router-dom";
 
 const Login = ({user, loginUser}) => {
     const [currentUser, setCurrentUser] = useState(user);
@@ -8,6 +9,14 @@ const Login = ({user, loginUser}) => {
         loginUser(data.email, data.password);
     }
 
+    useEffect(() => {
+        //console.log(user.isAuthenticated);
+    }, [user]);
+
+
+    if(user.isAuthenticated) {
+        return <Redirect to={'/maps'}/>
+    }
     return (
         <>
             <div className="page-holder d-flex align-items-center">

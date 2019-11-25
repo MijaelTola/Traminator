@@ -135,17 +135,12 @@ const MapboxGLMap = ({ createPath, tab, routes }) => {
         setMap(map);
         map.resize();
         if (tab === 'MAP') {
-          Object.keys(routes).map(data => {
-            //console.log(data);
-            //console.log(routes[data].coordinates);
-            addRoute(routes[data].coordinates);
-          });
+          Object.keys(routes).map(data => addRoute(routes[data].coordinates));
         }
       });
 
       map.on('click', (e) => {
         //console.log(e);
-
       });
       //map.remove();
     };
