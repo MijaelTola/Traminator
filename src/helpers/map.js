@@ -80,11 +80,27 @@ const MapboxGLMap = ({ createPath, tab, routes }) => {
         });
 
         map.addControl(draw);
+
+        const getMatch = (e) => {
+          var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + e + '?geometries=geojson&steps=true&&access_token=' + mapboxgl.accessToken;
+          var req = new XMLHttpRequest();
+          req.responseType = 'json';
+          req.open('GET', url, true);
+          req.onload =  () => {
+            var jsonResponse = req.response;
+            // add results to info box
+            var coords = jsonResponse.routes[0].geometry.coordinates;
+
+            createPath(coords);
+          };
+          req.send();
+        }
+
         const createRoute = () => {
           const data = draw.getAll();
           let lastFeature = data.features.length - 1;
           let coords = data.features[lastFeature].geometry.coordinates;
-          createPath(coords);
+          getMatch(coords.join(';'));
         }
         const deleteRoutes = () => {
           draw.deleteAll().getAll();
@@ -95,6 +111,7 @@ const MapboxGLMap = ({ createPath, tab, routes }) => {
         map.on('draw.delete', deleteRoutes)
 
       }
+
 
       const addRoute = (coords) => {
         console.log(coords);

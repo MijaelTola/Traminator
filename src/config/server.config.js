@@ -1,6 +1,6 @@
 import store from '../store'
 
-const API_URL = 'http://localhost:8080';
+const API_URL = 'https://traminator.herokuapp.com';
 
 export const SERVER = (function() {
     return {
@@ -9,6 +9,9 @@ export const SERVER = (function() {
         },
         CREATE_USER: () => {
             return `${API_URL}/usuario`
+        },
+        CREATE_ROUTE: () => {
+            return `${API_URL}/linea`
         }
     };
 })();

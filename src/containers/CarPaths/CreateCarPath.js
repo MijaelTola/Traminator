@@ -3,7 +3,7 @@ import {withRouter} from "react-router-dom";
 
 import CreateCarPath from '../../components/CarPaths/CreateCarPath';
 
-import { createRoute} from '../../store/actions/routes';
+import { postRoutes } from '../../store/actions/routes';
 
 const mapStateToProps = (state) => {
     return {
@@ -15,13 +15,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         createRoute(data) {
-            dispatch(createRoute({
+            dispatch(postRoutes({
                 pathId: data.pathId,
                 ini: data.ini,
                 fin: data.fin,
                 coordinates: data.coordinates,
             }));
-        }
+
+        },
+
     }
 }
 
