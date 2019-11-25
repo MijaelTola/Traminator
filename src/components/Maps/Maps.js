@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import Header from '../../containers/Header/Header'
 import NavBar from '../../containers/NavBar/NavBar'
-import Map from '../../helpers/map'
+import Map from '../../helpers/containerMap'
 
 
 
@@ -17,7 +17,7 @@ const MapboxGLMap = () => {
                 <div>
                     <NavBar />
                 </div>
-                <Map/>
+                <Map tab="MAP"/>
             </div>
         </>
     )

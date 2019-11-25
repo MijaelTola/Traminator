@@ -8,3 +8,11 @@ export const defaultUser = {
     role: '',
     tokenId: ''
   };
+
+export const  defaultMap = {
+  coordinates: []
+}
+
+export const defaultRoute = {
+  routesData: {}
+}

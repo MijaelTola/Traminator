@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { roles } from '../../config/constants'
 import useForm from 'react-hook-form'
 import Header from '../../containers/Header/Header'
 import { Navbar, Nav, Form, Dropdown } from 'react-bootstrap'
 import NavBar from '../../containers/NavBar/NavBar'
+import Map from '../../helpers/containerMap'
 
-export default () => {
+export default ({coordinates, createRoute}) => {
+    useEffect(() => {
+        //console.log(coordinates);
+    }, [coordinates]);
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        console.log(data);
+        //console.log(data);
+        createRoute({...data, coordinates: coordinates});
     }
 
     let options = [];
@@ -21,8 +26,8 @@ export default () => {
         <>
             <Header />
             <Nav>
-                <div className="d-flex align-items-stretch" style={{width:"10000px"}}>
-                    <NavBar/>
+                <div className="d-flex align-items-stretch" style={{ width: "10000px" }}>
+                    <NavBar />
                     <div className="page-holder w-100 d-flex flex-wrap">
                         <div className="container-fluid px-xl-5">
                             <section className="py-5">
@@ -32,7 +37,7 @@ export default () => {
                                             <h3 className="h6 text-uppercase mb-0">Crear Linea</h3>
                                         </div>
                                         <div className="card-body">
-                                            <p>Todos los datos son necesarios  </p>
+                                            <p> Para crear una linea marca en orden la ruta que seguira esta Linea </p>
                                             <form className="form-horizontal" onSubmit={handleSubmit(onSubmit)} >
                                                 <div className="form-group row">
                                                     <label className="col-md-3 form-control-label">Numero</label>
@@ -45,7 +50,7 @@ export default () => {
                                                 <div className="form-group row">
                                                     <label className="col-md-3 form-control-label">Inicio</label>
                                                     <div className="col-md-9">
-                                                        <input ref={register} name="begin" id="inputHorizontalSuccess" type="text" placeholder="Punto Inicial" className="form-control form-control-success" />
+                                                        <input ref={register} name="ini" id="inputHorizontalSuccess" type="text" placeholder="Punto Inicial" className="form-control form-control-success" />
                                                         <small className="form-text text-muted ml-3"> El inicio es necesario</small>
                                                     </div>
                                                 </div>
@@ -53,7 +58,7 @@ export default () => {
                                                 <div className="form-group row">
                                                     <label className="col-md-3 form-control-label">Final</label>
                                                     <div className="col-md-9">
-                                                        <input ref={register} name="end" id="inputHorizontalSuccess" type="text" placeholder="Punto final" className="form-control form-control-success" />
+                                                        <input ref={register} name="fin" id="inputHorizontalSuccess" type="text" placeholder="Punto final" className="form-control form-control-success" />
                                                         <small className="form-text text-muted ml-3"> El final es necesario</small>
                                                     </div>
                                                 </div>
@@ -64,15 +69,13 @@ export default () => {
                                                     </div>
                                                 </div>
 
-                                                {
-                                                    //here comos positions and locations 
-                                                }
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </section>
                         </div>
+                        <Map tab="CREATE_ROUTE"/>
                     </div>
                 </div>
             </Nav>
