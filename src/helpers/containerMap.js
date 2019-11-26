@@ -7,6 +7,8 @@ import Map from './map';
 const mapStateToProps = (state, ownProps) => {
   return {
       routes: state.routes.routesData,
+      coordinates: state.routes.coordinates,
+      pathId: state.routes.pathId
   };
 };
 

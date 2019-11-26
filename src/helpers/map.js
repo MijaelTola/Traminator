@@ -13,14 +13,44 @@ const styles = {
   position: "relative"
 };
 
-const MapboxGLMap = ({ createPath, tab, routes }) => {
+const MapboxGLMap = ({ createPath, tab, routes, coordinates, pathId }) => {
 
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
-
   useEffect(() => {
     mapboxgl.accessToken = MAP_APP_TOKEN;
+    const addRoute2 = (coords) => {
+      // check if the route is already loaded
+      if (map.getSource('route')) {
+        map.removeLayer('route')
+        map.removeSource('route')
+      }
+      map.addLayer({
+        "id": "route",
+        "type": "line",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+              "type": "LineString",
+              "coordinates": coords
+            }
+          }
+        },
+        "layout": {
+          "line-join": "round",
+          "line-cap": "round"
+        },
+        "paint": {
+          "line-color": "#3b9ddd",
+          "line-width": 8,
+          "line-opacity": 0.8
+        }
+      });
+    }
     const initializeMap = ({ setMap, mapContainer }) => {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
@@ -30,7 +60,6 @@ const MapboxGLMap = ({ createPath, tab, routes }) => {
         height: 500,
       });
 
-      console.log(tab);
       if (tab === 'CREATE_ROUTE') {
         var draw = new MapboxDraw({
           displayControlsDefault: false,
@@ -86,7 +115,7 @@ const MapboxGLMap = ({ createPath, tab, routes }) => {
           var req = new XMLHttpRequest();
           req.responseType = 'json';
           req.open('GET', url, true);
-          req.onload =  () => {
+          req.onload = () => {
             var jsonResponse = req.response;
             // add results to info box
             var coords = jsonResponse.routes[0].geometry.coordinates;
@@ -102,6 +131,7 @@ const MapboxGLMap = ({ createPath, tab, routes }) => {
           let coords = data.features[lastFeature].geometry.coordinates;
           getMatch(coords.join(';'));
         }
+
         const deleteRoutes = () => {
           draw.deleteAll().getAll();
         }
@@ -114,7 +144,6 @@ const MapboxGLMap = ({ createPath, tab, routes }) => {
 
 
       const addRoute = (coords) => {
-        console.log(coords);
         // check if the route is already loaded
         if (map.getSource('route')) {
           map.removeLayer('route')
@@ -152,7 +181,7 @@ const MapboxGLMap = ({ createPath, tab, routes }) => {
         setMap(map);
         map.resize();
         if (tab === 'MAP') {
-          Object.keys(routes).map(data => addRoute(routes[data].coordinates));
+          addRoute(coordinates);
         }
       });
 
@@ -161,11 +190,14 @@ const MapboxGLMap = ({ createPath, tab, routes }) => {
       });
       //map.remove();
     };
-
-    if (!map) initializeMap({ setMap, mapContainer });
+    if (!map) {
+      initializeMap({ setMap, mapContainer });
+    } else {
+      if(tab === 'MAP') addRoute2(coordinates);
+    }
     return () => {
     }
-  }, [map, tab]);
+  }, [map, tab, pathId]);
 
   return <div ref={el => (mapContainer.current = el)} style={styles} />
 };

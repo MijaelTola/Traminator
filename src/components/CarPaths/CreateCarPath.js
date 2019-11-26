@@ -8,12 +8,10 @@ import Map from '../../helpers/containerMap'
 
 export default ({coordinates, createRoute}) => {
     useEffect(() => {
-        //console.log(coordinates);
     }, [coordinates]);
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        //console.log(data);
         createRoute({...data, coordinates: coordinates});
     }
 
@@ -65,7 +63,7 @@ export default ({coordinates, createRoute}) => {
 
                                                 <div className="form-group row">
                                                     <div className="col-md-9 ml-auto">
-                                                        <input type="submit" value="Crear Vehiculo" className="btn btn-primary" />
+                                                        <input type="submit" value="Crear Linea" className="btn btn-primary" />
                                                     </div>
                                                 </div>
 

@@ -19,6 +19,14 @@ export const loadRoute = (data) => {
     }
 }
 
+export const selectRoute = (data) => {
+    return {
+        type: TYPES.SELECT_ROUTE,
+        pathId: data.pathId,
+        coordinates: data.coordinates
+    }
+} 
+
 export const postRoutes = (data) => {
     let coordinates = [];
 
@@ -46,13 +54,16 @@ export const getRoutes = () => {
         let result = await getData(SERVER.CREATE_ROUTE(), GET());
 
         let routeData = {};
-
         result.lineas.forEach(data => {
+            let coordinates = [];
+            data.coordenadas.forEach(data => {
+                coordinates.push([parseFloat(data.lat),parseFloat(data.lng)]);
+            })
             routeData[data.identificador] = {
                 pathId: data.identificador,
-                ini: data.inicion,
+                ini: data.inicio,
                 fin: data.fin,
-                coordinates: data.coordenadas
+                coordinates: coordinates
             }
         });
         dispatch(loadRoute(routeData));
