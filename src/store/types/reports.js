@@ -1,0 +1,1 @@
+export const LOAD_REPORTS = 'LOAD_REPORTS';

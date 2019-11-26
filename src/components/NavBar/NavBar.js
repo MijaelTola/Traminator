@@ -19,7 +19,7 @@ const NavBar = ({ logoutUser, user }) => {
                     <li className="sidebar-list-item">
                         <NavLink className="sidebar-link text-muted" to="/reports">
                             <i className="o-sales-up-1 mr-3 text-gray"></i>
-                            <span>Reportar</span>
+                            <span>Denuncias</span>
                         </NavLink>
 
                     </li>

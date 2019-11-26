@@ -22,6 +22,9 @@ export const SERVER = (function () {
         LOAD_CAR: () => {
             return `${API_URL}/vehiculochofer`
         },
+        LOAD_REPORTS: () => {
+            return `${API_URL}/denuncia`;
+        }
     };
 })();
 

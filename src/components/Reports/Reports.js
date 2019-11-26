@@ -6,8 +6,9 @@ import NavBar from '../../containers/NavBar/NavBar'
 
 import Table from '../../helpers/containerTable';
 
-export default ({}) => {
+export default ({loadReports}) => {
     useEffect(() => {
+        loadReports();
     }, []);
     /*
     let headers = <tr>

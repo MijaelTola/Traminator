@@ -31,3 +31,7 @@ export const defaultCar = {
   userId: '',
   cars: []
 }
+
+export const defaultreports = {
+  reports: {}
+}
