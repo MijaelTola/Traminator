@@ -14,3 +14,18 @@ export const delete_path = () => {
         coordinates: defaultMap
     }
 }
+
+export const replacePosition = (data) => {
+    return {
+        type: TYPES.REPLACE_POSITION,
+        lat: data.lat,
+        lng: data.lng,
+    }
+}
+
+export const replaceUserId = data => {
+    return {
+        type: TYPES.REPLACE_USER_ID,
+        id: data
+    }
+}

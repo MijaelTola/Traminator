@@ -5,11 +5,13 @@ import Maps from '../../components/Maps/Maps'
 import { getRoutes, selectRoute } from '../../store/actions/routes';
 import { loadAllUsers } from '../../store/actions/user'
 import { loadCars } from '../../store/actions/car';
+import { replacePosition, replaceUserId } from '../../store/actions/map';
 
 const mapStateToProps = (state) => {
     return {
         routes: state.routes.routesData,
-        users: state.user.users
+        users: state.user.users,
+        driverId: state.map.id,
     };
 };
 
@@ -26,6 +28,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         loadAllCars() {
             dispatch(loadCars());
+        },
+        replacePosition(data) {
+            dispatch(replacePosition(data));
+        },
+        replaceUserId(id) {
+            dispatch(replaceUserId(id));
         }
     }
 }

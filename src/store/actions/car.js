@@ -10,9 +10,16 @@ export const replaceCar = (data) => {
     }
 }
 
+export const loadCar = (data) => {
+    return {
+        type: TYPES.LOAD_CAR,
+        cars: data
+    }
+}
+
 export const createCar = (data) => {
     return async dispatch => {
-        const result = await fetch(SERVER.CREATE_CAR(), 
+        const result = await postData(SERVER.CREATE_CAR(), 
         POST({
             placa: data.carId,
             descripcion: data.description,
@@ -25,7 +32,11 @@ export const createCar = (data) => {
 
 export const loadCars = () => {
     return async dispatch => {
-        const result = await fetch(SERVER.LOAD_CAR(), GET());
-        console.log(result);
+        const result = await getData(SERVER.LOAD_CAR(), GET());
+        let cars = [];
+        if(result.ok) {
+            result.vehiculochoferes.forEach(data => cars.push(data));
+        }
+        dispatch(loadCar(cars));
     }
 }

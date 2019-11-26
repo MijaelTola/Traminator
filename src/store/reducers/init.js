@@ -11,7 +11,10 @@ export const defaultUser = {
   };
 
 export const  defaultMap = {
-  coordinates: []
+  coordinates: [],
+  lat: '',
+  lng: '',
+  id: '',
 }
 
 export const defaultRoute = {

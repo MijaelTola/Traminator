@@ -1,2 +1,4 @@
 export const CREATE_PATH = 'CREATE_PATH';
 export const DELETE_PATH = 'DELETE_PATH';
+export const REPLACE_POSITION = 'REPLACE_POSITION';
+export const REPLACE_USER_ID = 'REPLACE_USER_ID';

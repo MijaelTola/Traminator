@@ -7,6 +7,8 @@ export const map = (state = {...defaultMap}, action) => {
             return {...state, coordinates: action.coordinates};
         case TYPES.DELETE_PATH:
             return { ...defaultMap };
+        case TYPES.REPLACE_USER_ID:
+            return {...state, id: action.id};
         default:
             return state;
     }
