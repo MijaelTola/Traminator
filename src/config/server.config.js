@@ -10,6 +10,9 @@ export const SERVER = (function () {
         CREATE_USER: () => {
             return `${API_URL}/usuario`
         },
+        LOAD_USER: () => {
+            return `${API_URL}/usuario`
+        },
         CREATE_ROUTE: () => {
             return `${API_URL}/linea`
         }
@@ -38,7 +41,7 @@ export const GETWITHTOKEN = () => {
     return {
         method: 'GET',
         headers: {
-            id_token: store.getState().user.tokeId
+            token: store.getState().user.tokeId
         },
     }
 };

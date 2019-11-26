@@ -18,3 +18,7 @@ export const defaultRoute = {
   coordinates: [],
   pathId: ''
 }
+
+export const defaultUsers = {
+  users: {}
+}

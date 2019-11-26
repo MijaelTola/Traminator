@@ -1,7 +1,7 @@
 import * as TYPES from '../types'
 import { defaultUser } from '../reducers/init';
-import { SERVER, POST } from '../../config/server.config'
-import { postData } from '../../services/datasets'
+import { SERVER, POST, GETWITHTOKEN } from '../../config/server.config'
+import { postData, getData } from '../../services/datasets'
 
 export const loginUser = (user) => {
     return {
@@ -20,9 +20,16 @@ export const logoutUser = () => {
 }
 
 export const registerUser = (user) => {
-    console.log('comes here');
+    //console.log('comes here');
     return async dispatch => {
         const result = await postData(SERVER.CREATE_USER(), POST(user));
+        console.log(result);
+    }
+}
+
+export const loadAllUsers = () => {
+    return async dispatch => {
+        const result = await getData(SERVER.LOAD_USER(), GETWITHTOKEN());
         console.log(result);
     }
 }

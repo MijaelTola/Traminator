@@ -2,12 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {Redirect, Route, Switch} from 'react-router-dom'
 
-import Register from '../../containers/Register/Register';
-import CreateCarPath from '../CarPaths/CreateCarPath';
+import Register from '../../containers/Register/Register'
+import CreateCarPath from '../CarPaths/CreateCarPath'
 import PathList from '../CarPaths/ListCarPath'
 import Maps from '../Maps/Maps'
+import UserList from '../UserList/UserList'
+
 import Home from '../../components/Maps/Maps'
-import UserList from '../../components/UserList/UserList'
 import CarRegister from '../../components/CarRegister/CarRegister'
 
 
