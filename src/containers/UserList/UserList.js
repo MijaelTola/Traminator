@@ -5,7 +5,8 @@ import { loadAllUsers } from '../../store/actions/user'
 
 const mapStateToProps = (state) => {
     return {
-      user: state.user
+      user: state.user,
+      users: state.user.users
     };
 };
 

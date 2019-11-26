@@ -1,14 +1,36 @@
-import React, {useEffect} from 'react'
-import useForm from 'react-hook-form'
+import React, { useEffect } from 'react'
 
 import Header from '../../containers/Header/Header'
-import { Navbar, Nav, Form, Dropdown } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 import NavBar from '../../containers/NavBar/NavBar'
 
-export default ({loadAllUsers}) => {
+import Table from '../../helpers/containerTable';
+
+export default ({ loadAllUsers, users }) => {
     useEffect(() => {
         loadAllUsers();
     }, []);
+
+    let headers = <tr>
+        <th>#</th>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Role</td>
+        <td>Estado</td>
+    </tr>
+    
+    let rows = [];
+    users.forEach((data, index)=> {
+        rows.push(
+        <tr>
+            <th scope="row" >{index}</th>
+            <td>{data.name}</td>
+            <td>{data.email}</td>
+            <td>{data.role}</td>
+            <td>{data.state ? 'Activo' : 'No activo'}</td>
+        </tr>)
+    });
+    
     return (
         <>
             <Header />
@@ -24,42 +46,7 @@ export default ({loadAllUsers}) => {
                                             <h6 className="text-uppercase mb-0">Striped table with hover effect</h6>
                                         </div>
                                         <div className="card-body">
-                                            <table className="table table-striped table-hover card-text">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>First Name</th>
-                                                        <th>Last Name</th>
-                                                        <th>Username</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Mark</td>
-                                                        <td>Otto</td>
-                                                        <td>@mdo</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>Jacob</td>
-                                                        <td>Thornton</td>
-                                                        <td>@fat</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>Larry</td>
-                                                        <td>the Bird</td>
-                                                        <td>@twitter                            </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>Sam</td>
-                                                        <td>Nevoresky</td>
-                                                        <td>@facebook                            </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            <Table headers={headers} rows={rows}/>
                                         </div>
                                     </div>
                                 </div>

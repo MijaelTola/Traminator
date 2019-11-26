@@ -18,19 +18,40 @@ export const logoutUser = () => {
         action: { ...defaultUser }
     }
 }
+export const loadUsers = (users) => {
+    return {
+        type: TYPES.LOAD_ALL_USERS,
+        users: users,
+    }
+}
 
 export const registerUser = (user) => {
     //console.log('comes here');
     return async dispatch => {
         const result = await postData(SERVER.CREATE_USER(), POST(user));
-        console.log(result);
+
+        //console.log('test', result)
+        //result.usuarios.foreach(data => console.log(data));
+
+        dispatch(loadUsers(result));
     }
 }
 
 export const loadAllUsers = () => {
     return async dispatch => {
         const result = await getData(SERVER.LOAD_USER(), GETWITHTOKEN());
-        console.log(result);
+        let users = []
+        if (result.ok) {
+            result.usuarios.forEach(data => {
+                users.push({
+                    name: data.nombre,
+                    email: data.email,
+                    role: data.role,
+                    state: true,
+                });
+            });
+        }
+        dispatch(loadUsers(users));
     }
 }
 export const loggInUser = (email, password) => {
@@ -57,8 +78,8 @@ export const loggInUser = (email, password) => {
                 signUpSuccess: result.ok,
                 isLogged: true,
                 isAuthenticated: true
-                }))
-        }  else {
+            }))
+        } else {
             dispatch(loginUser({
                 signUpSuccess: 'not found',
                 isLogged: false,

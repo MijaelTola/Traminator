@@ -6,7 +6,9 @@ export const user = (state = {...defaultUser}, action) => {
         case TYPES.LOAD_USER:
             return { ...defaultUser };
         case TYPES.REPLACE_USER:
-            return { ...action.action};
+            return {...state, ...action.action};
+        case TYPES.LOAD_ALL_USERS:
+            return {...state, users: action.users}
         default:
             return state;
     }

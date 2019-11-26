@@ -6,7 +6,8 @@ export const defaultUser = {
     name: '',
     email: '',
     role: '',
-    tokenId: ''
+    tokenId: '',
+    users: []
   };
 
 export const  defaultMap = {
@@ -17,8 +18,4 @@ export const defaultRoute = {
   routesData: {},
   coordinates: [],
   pathId: ''
-}
-
-export const defaultUsers = {
-  users: {}
 }
