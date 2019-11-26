@@ -56,5 +56,6 @@
     "eslint-loader": "^3.0.2",
     "redux-devtools": "^3.5.0",
     "style-loader": "^1.0.0"
-  }
+  },
+  "proxy": "https://traminator.herokuapp.com"
 }

@@ -7,10 +7,11 @@ import Map from '../../helpers/containerMap'
 import useSocket from 'use-socket.io-client';
 
 
-const MapboxGLMap = () => {
+const MapboxGLMap = ({getRoutes}) => {
     const [socket] = useSocket('https://traminator.herokuapp.com');
 
     useEffect(() => {
+        getRoutes();
         socket.on('recibirCoordenadas', (a) => {
             const x = JSON.parse(a);
             console.log(x);

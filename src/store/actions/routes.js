@@ -1,6 +1,6 @@
 import * as TYPES from '../types'
-import { postData } from '../../services/datasets'
-import { SERVER, POST } from '../../config/server.config'
+import { postData, getData } from '../../services/datasets'
+import { SERVER, POST, GET } from '../../config/server.config'
 
 export const createRoute = (data) => {
     return {
@@ -32,4 +32,11 @@ export const postRoutes = (data) => {
         }));
         dispatch(createRoute(data));
     }
+}
+
+export const getRoutes = () => {
+    return async dispatch => {
+        let result = await getData(SERVER.CREATE_ROUTE(), GET());
+        console.log(result);
+    };
 }

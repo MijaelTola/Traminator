@@ -1,8 +1,8 @@
 import store from '../store'
 
-const API_URL = 'https://traminator.herokuapp.com';
+const API_URL = process.env.REACT_APP_BASE_API_URL;
 
-export const SERVER = (function() {
+export const SERVER = (function () {
     return {
         LOGIN: () => {
             return `${API_URL}/login`
@@ -26,10 +26,19 @@ export const POST = (data) => {
     }
 }
 
-const GET = {
-    method: 'GET',
-    headers: {
-      id_token: store.getState().user.tokenId
-    },
-    credentials: 'include'
+export const GET = () => {
+    return {
+        method: 'GET',
+        headers: {
+        },
+    }
+};
+
+export const GETWITHTOKEN = () => {
+    return {
+        method: 'GET',
+        headers: {
+            id_token: store.getState().user.tokeId
+        },
+    }
 };

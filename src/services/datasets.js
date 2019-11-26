@@ -16,3 +16,9 @@ export const postData = (url, post) => {
     .then(response => response.json())
     .then(data => data);
 };
+
+export const getData = (url, header) => {
+  return fetch(url, header)
+    .then(response => response.json())
+    .then(data => data);
+}
