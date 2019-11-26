@@ -25,5 +25,6 @@ export const defaultCar = {
   description: '',
   state: '',
   pathId: '',
-  userId: ''
+  userId: '',
+  cars: []
 }

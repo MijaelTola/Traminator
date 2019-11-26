@@ -4,6 +4,7 @@ import Maps from '../../components/Maps/Maps'
 
 import { getRoutes, selectRoute } from '../../store/actions/routes';
 import { loadAllUsers } from '../../store/actions/user'
+import { loadCars } from '../../store/actions/car';
 
 const mapStateToProps = (state) => {
     return {
@@ -22,6 +23,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         loadAllUsers() {
             dispatch(loadAllUsers());
+        },
+        loadAllCars() {
+            dispatch(loadCars());
         }
     }
 }

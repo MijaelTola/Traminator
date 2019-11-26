@@ -18,7 +18,10 @@ export const SERVER = (function () {
         },
         CREATE_CAR: () => {
             return `${API_URL}/vehiculochofer`
-        }
+        },
+        LOAD_CAR: () => {
+            return `${API_URL}/vehiculochofer`
+        },
     };
 })();
 

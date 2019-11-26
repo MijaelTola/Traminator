@@ -1,5 +1,5 @@
 import * as TYPES from '../types';
-import { SERVER, POST, GETWITHTOKEN } from '../../config/server.config'
+import { SERVER, POST, GET} from '../../config/server.config'
 import { postData, getData } from '../../services/datasets'
 
 
@@ -20,5 +20,12 @@ export const createCar = (data) => {
             idChofer: data.userId,
         }))
         dispatch(replaceCar(data));
+    }
+}
+
+export const loadCars = () => {
+    return async dispatch => {
+        const result = await fetch(SERVER.LOAD_CAR(), GET());
+        console.log(result);
     }
 }

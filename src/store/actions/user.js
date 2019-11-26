@@ -26,13 +26,8 @@ export const loadUsers = (users) => {
 }
 
 export const registerUser = (user) => {
-    //console.log('comes here');
     return async dispatch => {
         const result = await postData(SERVER.CREATE_USER(), POST(user));
-
-        //console.log('test', result)
-        //result.usuarios.foreach(data => console.log(data));
-
         dispatch(loadUsers(result));
     }
 }
