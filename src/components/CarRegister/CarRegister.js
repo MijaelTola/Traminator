@@ -5,11 +5,14 @@ import Header from '../../containers/Header/Header'
 import { Navbar, Nav, Form, Dropdown } from 'react-bootstrap'
 import NavBar from '../../containers/NavBar/NavBar'
 
-export default () => {
-
+export default ({createCar, user}) => {
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        console.log(data);
+        createCar({
+            ...data,
+            state: true,
+            userId: user.id,
+        });
     }
 
     return (
@@ -32,7 +35,7 @@ export default () => {
                                                 <div className="form-group row">
                                                     <label className="col-md-3 form-control-label">Placa</label>
                                                     <div className="col-md-9">
-                                                        <input ref={register} name="carId" id="inputHorizontalSuccess" type="text" placeholder="Nombre y Apellidos" className="form-control form-control-success" />
+                                                        <input ref={register} name="carId" id="inputHorizontalSuccess" type="text" placeholder="Placas" className="form-control form-control-success" />
                                                         <small className="form-text text-muted ml-3">Escriba el numero de placa del vehiculo</small>
                                                     </div>
                                                 </div>
@@ -40,7 +43,7 @@ export default () => {
                                                 <div className="form-group row">
                                                     <label className="col-md-3 form-control-label">Descripcion</label>
                                                     <div className="col-md-9">
-                                                        <input ref={register} name="description" id="inputHorizontalSuccess" type="text" placeholder="Nombre y Apellidos" className="form-control form-control-success" />
+                                                        <input ref={register} name="description" id="inputHorizontalSuccess" type="text" placeholder="Descripcion" className="form-control form-control-success" />
                                                         <small className="form-text text-muted ml-3">La descripcion es necesaria, color, marca, modelo</small>
                                                     </div>
                                                 </div>

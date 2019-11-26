@@ -15,6 +15,9 @@ export const SERVER = (function () {
         },
         CREATE_ROUTE: () => {
             return `${API_URL}/linea`
+        },
+        CREATE_CAR: () => {
+            return `${API_URL}/vehiculochofer`
         }
     };
 })();

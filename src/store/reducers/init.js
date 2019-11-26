@@ -19,3 +19,11 @@ export const defaultRoute = {
   coordinates: [],
   pathId: ''
 }
+
+export const defaultCar = {
+  carId: '',
+  description: '',
+  state: '',
+  pathId: '',
+  userId: ''
+}

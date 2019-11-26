@@ -5,11 +5,11 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import Register from '../../containers/Register/Register'
 import CreateCarPath from '../CarPaths/CreateCarPath'
 import PathList from '../CarPaths/ListCarPath'
+import CarRegister from '../CarRegister/CarRegister'
 import Maps from '../Maps/Maps'
 import UserList from '../UserList/UserList'
 
 import Home from '../../components/Maps/Maps'
-import CarRegister from '../../components/CarRegister/CarRegister'
 
 
 const PrivateAppRoutes = ({user}) => {
