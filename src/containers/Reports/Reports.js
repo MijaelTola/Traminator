@@ -6,7 +6,8 @@ import { loadReports } from '../../store/actions/reports';
 
 const mapStateToProps = (state) => {
     return {
-      user: state.user
+      user: state.user,
+      reports: state.reports.reports
     };
 };
 

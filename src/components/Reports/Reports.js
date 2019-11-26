@@ -1,35 +1,39 @@
 import React, { useEffect } from 'react'
 
+import { toDate, format } from 'date-fns'
+
 import Header from '../../containers/Header/Header'
 import { Nav } from 'react-bootstrap'
 import NavBar from '../../containers/NavBar/NavBar'
 
 import Table from '../../helpers/containerTable';
 
-export default ({loadReports}) => {
+export default ({loadReports, reports}) => {
     useEffect(() => {
         loadReports();
     }, []);
-    /*
+    console.log(reports);
     let headers = <tr>
         <th>#</th>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Role</td>
-        <td>Estado</td>
+        <td>Fecha</td>
+        <td>Usuario</td>
+        <td>Motivo</td>
+        <td>Detalle</td>
+        <td>Placa</td>
     </tr>
     
     let rows = [];
-    users.forEach((data, index)=> {
+    reports.forEach((data, index)=> {
         rows.push(
-        <tr>
+        <tr key= {index}>
             <th scope="row" >{index}</th>
+            <td>{data.date}</td>
             <td>{data.name}</td>
-            <td>{data.email}</td>
-            <td>{data.role}</td>
-            <td>{data.state ? 'Activo' : 'No activo'}</td>
+            <td>{data.reason}</td>
+            <td>{data.details}</td>
+            <td>{data.carId}</td>
         </tr>)
-    });*/
+    });
     
     return (
         <>
@@ -46,6 +50,7 @@ export default ({loadReports}) => {
                                             <h6 className="text-uppercase mb-0">Striped table with hover effect</h6>
                                         </div>
                                         <div className="card-body">
+                                            <Table headers={headers} rows={rows}/>
                                         </div>
                                     </div>
                                 </div>

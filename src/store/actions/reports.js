@@ -14,7 +14,13 @@ export const loadReports = () => {
         let reports = [];
         if (results.ok) {
             results.denuncias.forEach(data => {
-                reports.push(data);
+                reports.push({
+                    date: data.fecha,
+                    name: data.nombre,
+                    carId: data.placa,
+                    details: data.detalle,
+                    reason: data.motivo,
+                });
             });
         }
         dispatch(replaceReports(reports));

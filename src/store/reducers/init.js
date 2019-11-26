@@ -33,5 +33,5 @@ export const defaultCar = {
 }
 
 export const defaultreports = {
-  reports: {}
+  reports: []
 }

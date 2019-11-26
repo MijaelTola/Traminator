@@ -22,7 +22,7 @@ export default ({ loadAllUsers, users }) => {
     let rows = [];
     users.forEach((data, index)=> {
         rows.push(
-        <tr>
+        <tr key={index}>
             <th scope="row" >{index}</th>
             <td>{data.name}</td>
             <td>{data.email}</td>
@@ -41,7 +41,7 @@ export default ({ loadAllUsers, users }) => {
                         <section className="py-5">
                             <div className="row">
                                 <div className="col-lg-6 mb-4">
-                                    <div className="card">
+                                    <div className="card" style={{right: "10px"}}>
                                         <div className="card-header">
                                             <h6 className="text-uppercase mb-0">Striped table with hover effect</h6>
                                         </div>
