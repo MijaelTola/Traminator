@@ -7,11 +7,13 @@ import Map from '../../helpers/containerMap'
 import useSocket from 'use-socket.io-client';
 
 
-const MapboxGLMap = ({ getRoutes, selectRoute, routes }) => {
+const MapboxGLMap = ({ getRoutes, selectRoute, routes, users, loadAllUsers }) => {
+    console.log(users);
     const [socket] = useSocket('https://traminator.herokuapp.com');
 
     useEffect(() => {
         getRoutes();
+        loadAllUsers();
         socket.on('recibirCoordenadas', (a) => {
             const x = JSON.parse(a);
             console.log(x);
@@ -26,7 +28,7 @@ const MapboxGLMap = ({ getRoutes, selectRoute, routes }) => {
     }
     const drop = Object.keys(routes).map(data => 
         { return <div onClick={() => selectCurrentRout(routes[data])} className="dropdown-item" key={routes[data].pathId}>{routes[data].pathId}</div> });
-
+    
     return (
         <>
             <Header />

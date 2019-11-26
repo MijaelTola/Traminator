@@ -48,6 +48,7 @@ export const loadAllUsers = () => {
                     email: data.email,
                     role: data.role,
                     state: true,
+                    id: data['_id'],
                 });
             });
         }
