@@ -1,74 +1,62 @@
-import React from 'react'
-import useForm from 'react-hook-form'
+import React, { useEffect } from "react";
 
 import Header from '../../containers/Header/Header'
-import { Navbar, Nav, Form, Dropdown } from 'react-bootstrap'
 import NavBar from '../../containers/NavBar/NavBar'
+import Map from '../../helpers/containerMap'
 
-export default () => {
-    const { register, handleSubmit } = useForm();
-    const onSubmit = (data) => {
-        console.log(data);
+import useSocket from 'use-socket.io-client';
+
+
+const MapboxGLMap = ({ getRoutes, selectRoute, routes }) => {
+    const [socket] = useSocket('https://traminator.herokuapp.com');
+
+    useEffect(() => {
+        getRoutes();
+        socket.on('recibirCoordenadas', (a) => {
+            const x = JSON.parse(a);
+            console.log(x);
+        });
+    },[]);
+
+    const selectCurrentRout = (data) => {
+        selectRoute({
+            pathId: data.pathId,
+            coordinates: data.coordinates
+        });
     }
+    const drop = Object.keys(routes).map(data => 
+        { return <div onClick={() => selectCurrentRout(routes[data])} className="dropdown-item" key={routes[data].pathId}>{routes[data].pathId}</div> });
+
     return (
         <>
             <Header />
-            <Nav>
-                <div className="d-flex align-items-stretch" style={{ width: "10000px" }}>
+            <div>
+            </div>
+            <div className="d-flex align-items-stretch">
+                <div>
                     <NavBar />
-                    <div class="container-fluid px-xl-5">
-                        <section class="py-5">
-                            <div class="row">
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h6 class="text-uppercase mb-0">Striped table with hover effect</h6>
-                                        </div>
-                                        <div class="card-body">
-                                            <table class="table table-striped table-hover card-text">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>First Name</th>
-                                                        <th>Last Name</th>
-                                                        <th>Username</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Mark</td>
-                                                        <td>Otto</td>
-                                                        <td>@mdo</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>Jacob</td>
-                                                        <td>Thornton</td>
-                                                        <td>@fat</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>Larry</td>
-                                                        <td>the Bird</td>
-                                                        <td>@twitter                            </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>Sam</td>
-                                                        <td>Nevoresky</td>
-                                                        <td>@facebook                            </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                    <div>
+                        <br/>
+                        <br/>
+                        <label className="form-control-label"> Seleccione algun Conductor</label>
+                        <div className="col-md-9">
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="btn btn-outline-primary dropdown-toggle">Lineas</button>
+                                    <div className="dropdown-menu">
+                                        {drop}
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+
                     </div>
                 </div>
-            </Nav>
+
+                <Map tab="MAP" />
+            </div>
         </>
     )
-}
+};
+
+export default MapboxGLMap

@@ -12,11 +12,6 @@ export default () => {
         console.log(data);
     }
 
-    let options = [];
-    for (let i = 0; i < roles.names.length; ++i) {
-        options.push(<option key={'op' + i} value={roles.values[i]}> {roles.names[i]} </option>)
-    }
-
     return (
         <>
             <Header />
@@ -45,7 +40,7 @@ export default () => {
                                                 <div className="form-group row">
                                                     <label className="col-md-3 form-control-label">Descripcion</label>
                                                     <div className="col-md-9">
-                                                        <input ref={register} name="text" id="inputHorizontalSuccess" type="text" placeholder="Nombre y Apellidos" className="form-control form-control-success" />
+                                                        <input ref={register} name="description" id="inputHorizontalSuccess" type="text" placeholder="Nombre y Apellidos" className="form-control form-control-success" />
                                                         <small className="form-text text-muted ml-3">La descripcion es necesaria, color, marca, modelo</small>
                                                     </div>
                                                 </div>
