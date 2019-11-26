@@ -9,10 +9,19 @@ const NavBar = ({ logoutUser, user }) => {
             <div id="sidebar" className="sidebar py-3">
                 <div className="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">MAIN</div>
                 <ul className="sidebar-menu list-unstyled">
+                    {/*
                     <li className="sidebar-list-item">
                         <NavLink className="sidebar-link text-muted" to="/home">
                             <i className="o-home-1 mr-3 text-gray"></i><span>Home</span>
                         </NavLink>
+                    </li>
+                    */}
+                    <li className="sidebar-list-item">
+                        <NavLink className="sidebar-link text-muted" to="/reports">
+                            <i className="o-sales-up-1 mr-3 text-gray"></i>
+                            <span>Reportar</span>
+                        </NavLink>
+
                     </li>
                     <li className="sidebar-list-item">
                         <NavLink className="sidebar-link text-muted" to="/register">

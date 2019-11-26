@@ -7,7 +7,7 @@ import Map from '../../helpers/containerMap'
 import useSocket from 'use-socket.io-client';
 
 
-const MapboxGLMap = ({ getRoutes, selectRoute, routes }) => {
+export default ({ getRoutes, selectRoute, routes }) => {
     const [socket] = useSocket('https://traminator.herokuapp.com');
 
     useEffect(() => {
@@ -58,5 +58,3 @@ const MapboxGLMap = ({ getRoutes, selectRoute, routes }) => {
         </>
     )
 };
-
-export default MapboxGLMap

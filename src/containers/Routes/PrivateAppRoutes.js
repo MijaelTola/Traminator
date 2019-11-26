@@ -8,6 +8,7 @@ import PathList from '../CarPaths/ListCarPath'
 import CarRegister from '../CarRegister/CarRegister'
 import Maps from '../Maps/Maps'
 import UserList from '../UserList/UserList'
+import Reports from '../Reports/Reports';
 
 import Home from '../../components/Maps/Maps'
 
@@ -22,6 +23,7 @@ const PrivateAppRoutes = ({user}) => {
             <Route path='/carRegister' component={CarRegister} />
             <Route path='/createPath' component={CreateCarPath} />
             <Route path='/pathsList' component={PathList} />
+            <Route path='/reports' component={Reports} />
         </Switch>
     )
 }
