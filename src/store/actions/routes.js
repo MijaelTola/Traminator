@@ -12,6 +12,13 @@ export const createRoute = (data) => {
     }
 }
 
+export const loadRoute = (data) => {
+    return {
+        type: TYPES.LOAD_ROUTE,
+        routesData: data, 
+    }
+}
+
 export const postRoutes = (data) => {
     let coordinates = [];
 
@@ -37,6 +44,17 @@ export const postRoutes = (data) => {
 export const getRoutes = () => {
     return async dispatch => {
         let result = await getData(SERVER.CREATE_ROUTE(), GET());
-        console.log(result);
+
+        let routeData = {};
+
+        result.lineas.forEach(data => {
+            routeData[data.identificador] = {
+                pathId: data.identificador,
+                ini: data.inicion,
+                fin: data.fin,
+                coordinates: data.coordenadas
+            }
+        });
+        dispatch(loadRoute(routeData));
     };
 }

@@ -14,6 +14,8 @@ export const routes = (state = { ...defaultRoute }, action) => {
                 coordinates: action.coordinates,
             }
             return newState;
+        case TYPES.LOAD_ROUTE:
+            return {...state, routesData: action.routesData };
         default:
             return state;
     }
