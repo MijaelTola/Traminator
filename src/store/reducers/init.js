@@ -18,7 +18,7 @@ export const  defaultMap = {
 }
 
 export const defaultRoute = {
-  routesData: {},
+  routesData: [],
   coordinates: [],
   pathId: ''
 }

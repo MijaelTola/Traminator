@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(getRoutes());
         },
         selectRoute(data) {
-            dispatch(selectRoute({pathId: data.pathId, coordinates: data.coordinates}));
+            dispatch(selectRoute({pathId: data.pathId[0], coordinates: data.coordinates}));
         },
         loadAllUsers() {
             dispatch(loadAllUsers());

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import Header from '../../containers/Header/Header'
 import NavBar from '../../containers/NavBar/NavBar'
@@ -9,39 +9,34 @@ import useSocket from 'use-socket.io-client';
 
 const MapboxGLMap = ({ getRoutes, selectRoute, routes, users, loadAllUsers, loadAllCars, replacePosition, replaceUserId, driverId }) => {
     const [socket] = useSocket('https://traminator.herokuapp.com');
-    console.log(routes);
+    const [allRoutes, setAllroutes] = useState([]);
     useEffect(() => {
         getRoutes();
         loadAllUsers();
         loadAllCars();
+        setAllroutes(routes);
         socket.on('recibirCoordenadas', (a) => {
             const data = JSON.parse(a);
-            console.log(routes);
-            console.log(data.idChofer, driverId);
+
             if(data.idChofer === driverId) {
-                const currentRoute = Object.keys(routes).map( res => {
-                    console.log(res.pathId, data.linea);
-                    //return res.pathId === data.linea;
+                const pathId = Object.keys(routes).filter( res => {
+                    return routes[res].pathId === data.linea;
                 });
-                console.log('here', currentRoute);
+                replacePosition({
+                    lat: parseFloat(data.latitud),
+                    lng: parseFloat(data.longitud)
+                });
+                selectRoute({
+                    pathId: pathId,
+                    coordinates: routes[pathId].coordinates,
+                });
             }
-            //console.log(data);
-            //console.log(data);
-            //console.log(data.latitud);
         });
     }, [driverId]);
 
     const selectCurrentRout = (data) => {
-        console.log(data);
         replaceUserId(data.id);
-        /*
-        selectRoute({
-            pathId: data.pathId,
-            coordinates: data.coordinates
-        });*/
     }
-    //const drop = Object.keys(routes).map(data => 
-    //{ return <div onClick={() => selectCurrentRout(routes[data])} className="dropdown-item" key={routes[data].pathId}>{routes[data].pathId}</div> });
     const drop = [];
     users.forEach((data, index) => {
         if (data.role === 'DRIVER_ROLE') {
