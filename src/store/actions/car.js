@@ -6,7 +6,7 @@ import { postData, getData } from '../../services/datasets'
 export const replaceCar = (data) => {
     return {
         type: TYPES.REPLACE_CAR,
-        data,
+        car: data,
     }
 }
 
@@ -26,7 +26,7 @@ export const createCar = (data) => {
             estado: data.state,
             idChofer: data.userId,
         }))
-        dispatch(replaceCar(data));
+        dispatch(replaceCar(result.vehiculochofer));
     }
 }
 
