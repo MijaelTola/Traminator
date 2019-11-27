@@ -14,7 +14,6 @@ export default ({ getRoutes, selectRoute, routes }) => {
         getRoutes();
         socket.on('recibirCoordenadas', (a) => {
             const x = JSON.parse(a);
-            console.log(x);
         });
     },[]);
 

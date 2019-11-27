@@ -8,7 +8,10 @@ const mapStateToProps = (state, ownProps) => {
   return {
       routes: state.routes.routesData,
       coordinates: state.routes.coordinates,
-      pathId: state.routes.pathId
+      pathId: state.routes.pathId,
+      lat: state.map.lat,
+      lng: state.map.lng,
+      userId: state.map.id,
   };
 };
 

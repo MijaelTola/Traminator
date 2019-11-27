@@ -13,11 +13,10 @@ const styles = {
   position: "relative"
 };
 
-const MapboxGLMap = ({ createPath, tab, routes, coordinates, pathId }) => {
+const MapboxGLMap = ({ createPath, tab, routes, coordinates, pathId, lat, lng, userId }) => {
 
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
-
   useEffect(() => {
     mapboxgl.accessToken = MAP_APP_TOKEN;
     const addRoute2 = (coords) => {
@@ -50,6 +49,32 @@ const MapboxGLMap = ({ createPath, tab, routes, coordinates, pathId }) => {
           "line-opacity": 0.8
         }
       });
+    }
+    const addPoint2 = (lat, lng) => {
+      if (map.getSource('point')) {
+        map.removeLayer('point')
+        map.removeSource('point')
+      } 
+      map.addSource('point', {
+        "type": "geojson",
+        "data": {
+          "type": "Point",
+          "coordinates": [lng, lat],
+          "properties": {
+            "title": "Mapbox DC",
+            "marker-symbol": "monument"
+          }
+        },
+      });
+      map.addLayer({
+        "id": "point",
+        "source": "point",
+        "type": "circle",
+        "paint": {
+          "circle-radius": 10,
+          "circle-color": "#FF5733"
+        },
+      })
     }
     const initializeMap = ({ setMap, mapContainer }) => {
       const map = new mapboxgl.Map({
@@ -176,12 +201,36 @@ const MapboxGLMap = ({ createPath, tab, routes, coordinates, pathId }) => {
         };
       }
 
+      const addPoint = (lat, lng) => {
+        map.addSource('point', {
+          "type": "geojson",
+          "data": {
+            "type": "Point",
+            "coordinates": [lng, lat],
+            "properties": {
+              "title": "Mapbox DC",
+              "marker-symbol": "monument"
+            }
+          },
+        });
+        map.addLayer({
+          "id": "point",
+          "source": "point",
+          "type": "circle",
+          "paint": {
+            "circle-radius": 10,
+            "circle-color": "#FF5733"
+          },
+        })
+      }
+
 
       map.on("load", () => {
         setMap(map);
         map.resize();
         if (tab === 'MAP') {
           addRoute(coordinates);
+          addPoint(lat, lng);
         }
       });
 
@@ -193,11 +242,14 @@ const MapboxGLMap = ({ createPath, tab, routes, coordinates, pathId }) => {
     if (!map) {
       initializeMap({ setMap, mapContainer });
     } else {
-      if(tab === 'MAP') addRoute2(coordinates);
+      if (tab === 'MAP') {
+        addRoute2(coordinates);
+        addPoint2(lat, lng)
+      }
     }
     return () => {
     }
-  }, [map, tab, pathId]);
+  }, [map, tab, pathId, lat, lng]);
 
   return <div ref={el => (mapContainer.current = el)} style={styles} />
 };
