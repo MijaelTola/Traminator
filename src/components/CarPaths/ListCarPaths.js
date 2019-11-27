@@ -4,17 +4,13 @@ import Header from '../../containers/Header/Header'
 import NavBar from '../../containers/NavBar/NavBar'
 import Map from '../../helpers/containerMap'
 
-import useSocket from 'use-socket.io-client';
 
 
 export default ({ getRoutes, selectRoute, routes }) => {
-    const [socket] = useSocket('https://traminator.herokuapp.com');
 
     useEffect(() => {
         getRoutes();
-        socket.on('recibirCoordenadas', (a) => {
-            const x = JSON.parse(a);
-        });
+        
     },[]);
 
     const selectCurrentRout = (data) => {

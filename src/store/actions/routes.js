@@ -41,7 +41,7 @@ export const postRoutes = (data) => {
         POST({
             identificador: data.pathId,
             inicio: data.ini,
-            fin: data.ini,
+            fin: data.fin,
             coordenadas: JSON.stringify(coordinates),
             destinos: JSON.stringify([{nombre:"vita"},{nombre:"Perez"}]),
         }));

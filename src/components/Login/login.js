@@ -49,7 +49,7 @@ const Login = ({user, loginUser}) => {
                             </form>
                         </div>
                     </div>
-                    <p className="mt-5 mb-0 text-gray-400 text-center">Design by Los cacheros de tu hermana</p>
+                    <p className="mt-5 mb-0 text-gray-400 text-center">Design by Corporaciones Patito</p>
                 </div>
             </div>
         </>

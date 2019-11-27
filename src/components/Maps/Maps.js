@@ -17,7 +17,6 @@ const MapboxGLMap = ({ getRoutes, selectRoute, routes, users, loadAllUsers, load
         setAllroutes(routes);
         socket.on('recibirCoordenadas', (a) => {
             const data = JSON.parse(a);
-            //console.log(data);
             if(data.idChofer === driverId) {
                 const pathId = Object.keys(routes).filter( res => {
                     return routes[res].pathId === data.linea;
@@ -31,6 +30,7 @@ const MapboxGLMap = ({ getRoutes, selectRoute, routes, users, loadAllUsers, load
                     coordinates: routes[pathId].coordinates,
                 });
             }
+            //socket.end();
         });
     }, [driverId]);
 
