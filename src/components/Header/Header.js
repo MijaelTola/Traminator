@@ -2,6 +2,10 @@ import React from 'react'
 import {  Nav  } from 'react-bootstrap'
 
 export default ({user, logoutUser}) => {
+    if(user.role === 'USER_ROLE') {
+        logoutUser();
+        alert('ACCESO DENEGADO');
+    }
     return (
         <header className="header">
                 <Nav className="navbar navbar-expand-lg px-4 py-2 bg-white shadow">

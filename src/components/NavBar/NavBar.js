@@ -16,26 +16,49 @@ const NavBar = ({ logoutUser, user }) => {
                         </NavLink>
                     </li>
                     */}
-                    <li className="sidebar-list-item">
-                        <NavLink className="sidebar-link text-muted" to="/reports">
-                            <i className="o-sales-up-1 mr-3 text-gray"></i>
-                            <span>Denuncias</span>
-                        </NavLink>
+                    {
+                        user.role !== 'DRIVER_ROLE' && (
+                            <>
+                                {
+                                    user.role !== 'AGENT_ROLE' && (
+                                        <>
+                                            <li className="sidebar-list-item">
+                                                <NavLink className="sidebar-link text-muted" to="/createPath">
+                                                    <i className="o-table-content-1 mr-3 text-gray"></i>
+                                                    <span>Crear Linea</span>
+                                                </NavLink>
+                                            </li>
+                                            <li className="sidebar-list-item">
+                                                <NavLink className="sidebar-link text-muted" to="/register">
+                                                    <i className="o-sales-up-1 mr-3 text-gray"></i>
+                                                    <span>Registrar</span>
+                                                </NavLink>
 
-                    </li>
-                    <li className="sidebar-list-item">
-                        <NavLink className="sidebar-link text-muted" to="/register">
-                            <i className="o-sales-up-1 mr-3 text-gray"></i>
-                            <span>Registrar</span>
-                        </NavLink>
+                                            </li>
+                                            <li className="sidebar-list-item">
+                                                <NavLink className="sidebar-link text-muted" to="/userList">
+                                                    <i className="o-table-content-1 mr-3 text-gray"></i>
+                                                    <span>Usuarios</span>
+                                                </NavLink>
+                                            </li>
+                                        </>)
+                                }
+                                <li className="sidebar-list-item">
+                                    <NavLink className="sidebar-link text-muted" to="/reports">
+                                        <i className="o-sales-up-1 mr-3 text-gray"></i>
+                                        <span>Denuncias</span>
+                                    </NavLink>
+                                </li>
 
-                    </li>
-                    <li className="sidebar-list-item">
-                        <NavLink className="sidebar-link text-muted" to="/userList">
-                            <i className="o-table-content-1 mr-3 text-gray"></i>
-                            <span>Usuarios</span>
-                        </NavLink>
-                    </li>
+                                <li className="sidebar-list-item">
+                                    <NavLink className="sidebar-link text-muted" to="/maps">
+                                        <i className="o-survey-1 mr-3 text-gray"></i><span>Monitoreo</span>
+                                    </NavLink>
+                                </li>
+                            </>
+                        )
+
+                    }
 
                     <li className="sidebar-list-item">
                         <NavLink className="sidebar-link text-muted" to="/pathsList">
@@ -44,18 +67,9 @@ const NavBar = ({ logoutUser, user }) => {
                         </NavLink>
                     </li>
 
-                    <li className="sidebar-list-item">
-                        <NavLink className="sidebar-link text-muted" to="/createPath">
-                            <i className="o-table-content-1 mr-3 text-gray"></i>
-                            <span>Crear Linea</span>
-                        </NavLink>
-                    </li>
 
-                    <li className="sidebar-list-item">
-                        <NavLink className="sidebar-link text-muted" to="/maps">
-                            <i className="o-survey-1 mr-3 text-gray"></i><span>Mapas</span>
-                        </NavLink>
-                    </li>
+
+
 
                 </ul>
             </div>

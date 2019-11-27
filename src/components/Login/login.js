@@ -15,7 +15,7 @@ const Login = ({user, loginUser}) => {
 
 
     if(user.isAuthenticated) {
-        return <Redirect to={'/maps'}/>
+        return <Redirect to={'/pathsList'}/>
     }
     return (
         <>

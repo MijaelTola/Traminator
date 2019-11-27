@@ -24,11 +24,23 @@ export const loadUsers = (users) => {
         users: users,
     }
 }
+export const createUser = (user) => {
+    return {
+        type: TYPES.CREATE_USER,
+        user: user,
+    }
+}
 
 export const registerUser = (user) => {
     return async dispatch => {
         const result = await postData(SERVER.CREATE_USER(), POST(user));
-        dispatch(loadUsers(result));
+        dispatch(createUser({
+            name: result.usuario.nombre,
+            email: result.usuario.email,
+            role: result.usuario.role,
+            state: result.usuario.estado,
+            id: result.usuario['_id'],
+        }));
     }
 }
 
